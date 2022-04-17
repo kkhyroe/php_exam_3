@@ -36,7 +36,6 @@ Route::post('/things/search','ThingController@search')->name('things.search');
 
 Route::get('/mythings/{thing}/edit','MyThingController@edit')->name('mythings.edit');
 Route::get('/mythings/{thing}','MyThingController@show')->name('mythings.show');
-Route::patch('/mythings/{thing}','MyThingController@update')->name('mythings.update');
 
 Route::get('/places','PlaceController@index')->name('places.index');
 Route::get('/places/create','PlaceController@create')->name('places.create');

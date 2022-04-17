@@ -1,11 +1,11 @@
-@extends('layouts.main')<!--Говорим, какой лейаут использовать как базу для этой страницы-->
-<!--Директива section с идентификатором, в случае совпадения этого идентификатора и требуемого, подставит содержимое в лейаут-->
+@extends('layouts.main')
+
 @section('content')
-    <form action="{{route('things.update',$thing->id)}}" method="post">
+    <form action="{{route('things.update',$thing->id)}}" method="post" class="col-md-3">
         @csrf
         @method('patch')
         <div class="form-group">
-            <label for="name">Название вещи</label>
+            <label for="name">Название</label>
             <input name="name" type="text" class="form-control" id="name" placeholder="name" value="{{$thing->name}}">
         </div>
         <div class="form-group">
@@ -14,13 +14,13 @@
                       placeholder="Content">{{$thing->description}}</textarea>
         </div>
         <div class="form-group">
-            <label for="wrnt">Гарантия (нед.)</label>
+            <label for="wrnt">Гарантия \ Срок годности</label>
             <input name="wrnt" class="form-control" id="wrnt" placeholder="Wrnt" value="{{$thing->wrnt}}" type="number">
         </div>
         <input type="hidden" name="master_id" value="{{\Illuminate\Support\Facades\Auth::user()->id}}">
 
         <div class="form-group" style="margin-top: 20px; margin-bottom: 20px">
-            <h3 class="h3">Изменить расположение</h3>
+            <label for="place_id">Место хранения</label>
             <select class="form-select" aria-label="Default select example" name="place_id">
                 @foreach($places as $place)
                     @if($place_id==$place->id)
@@ -32,6 +32,6 @@
             </select>
         </div>
 
-        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="submit" class="btn btn-primary">Обновить</button>
     </form>
 @endsection

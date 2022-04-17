@@ -1,5 +1,5 @@
-@extends('layouts.main')<!--Говорим, какой лейаут использовать как базу для этой страницы-->
-<!--Директива section с идентификатором, в случае совпадения этого идентификатора и требуемого, подставит содержимое в лейаут-->
+@extends('layouts.main')
+
 @section('content')
     <div>
         <h1>Название: {{$thing->name}}</h1>
@@ -14,9 +14,10 @@
             @csrf
             @method('delete')
             <input type="submit" class="btn btn-danger" value="Удалить">
-        </form></div>
+        </form>
+    </div>
     <div>
-        <button type="button" class="btn btn-primary" onclick="window.location.href = '{{route('mythings.edit',$thing->id)}}';">Передать вещь</button>
+        <button type="button" class="btn btn-primary" onclick="window.location.href = '{{route('things.edit',$thing->id)}}';">Редактировать</button>
     </div>
 
 @endsection

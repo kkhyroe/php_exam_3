@@ -29,21 +29,4 @@ class MyThingController extends Controller
         $users=User::all();
         return view('thing.my_edit',compact('users','thing'));
     }
-    public function update(Thing $thing){
-        $data=\request()->validate([
-            'user_id'=>'required',
-        ]);
-        $usagePlace=Usage::where('thing_id',$thing->id)->first();
-//        dd($usagePlace);
-        $usageData=[
-            'user_id'=>$data['user_id'],
-            'thing_id'=>$thing->id,
-            'place_id'=>$usagePlace->place_id,
-        ];
-//        dd($usageData);
-
-        $usagePlace->update($usageData);
-        return redirect()->route('mythings');
-
-    }
 }

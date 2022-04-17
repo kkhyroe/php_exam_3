@@ -1,6 +1,5 @@
 <!doctype html>
-<!--Эта страница- лейаут, она автоматически подставит своё содержимое с помощью extends на все страницы, где он есть-->
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -20,23 +19,23 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('main')}}">Main</a>
+                        <a class="nav-link" href="{{route('main')}}">Главная</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('things.create')}}">Create thing</a>
+                        <a class="nav-link" href="{{route('things.create')}}">Создать вещь</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('places.create')}}">Create place</a>
+                        <a class="nav-link" href="{{route('places.create')}}">Создать место</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('mythings')}}">My Things</a>
+                        <a class="nav-link" href="{{route('mythings')}}">Мои вещи</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
-    @yield('content')<!--Поле, куда воткнуть section с идентификатором content-->
+    @yield('content')
 </div>
 </body>
 </html>
