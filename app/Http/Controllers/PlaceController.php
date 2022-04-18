@@ -4,19 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Place;
 use Illuminate\Http\Request;
+use App\Models\Usage;
+use App\Models\Thing;
 
 class PlaceController extends Controller
 {
     public function index()
     {
-//        $category=Category::find(1);
-//        dd($category->places);
-//        $new=News::find(1);
-//        dd($new->category);
-//        $new=News::find(7);
-//        dd($new->tags);
-//        $tag=Tag::find(3);
-//        dd($tag->news);
         $places = Place ::all();
         return view('place.index', compact('places'));
     }
@@ -49,7 +43,6 @@ class PlaceController extends Controller
 
     public function edit(Place $place)
     {
-        //dd($place->tags[1]->id);
         return view('place.edit', compact('place'));
     }
 
@@ -67,6 +60,14 @@ class PlaceController extends Controller
 
     public function destroy(Place $place)
     {
+        while(Usage::where('place_id', $place->id)):
+            $usage=Usage::where('place_id', $place->id)->first();
+            if (!$usage)
+                break;
+            $thing=Thing::where('id', $usage->thing_id)->first();
+            $usage->delete();
+            $thing->delete();
+        endwhile;
         $place->delete();
         return redirect()->route('main');
     }

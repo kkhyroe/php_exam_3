@@ -12,14 +12,6 @@ class ThingController extends Controller
 {
     public function index()
     {
-//        $category=Category::find(1);
-//        dd($category->things);
-//        $new=News::find(1);
-//        dd($new->category);
-//        $new=News::find(7);
-//        dd($new->tags);
-//        $tag=Tag::find(3);
-//        dd($tag->news);
         $things = Thing::all();
         return view('thing.index', compact('things'));
     }
@@ -63,7 +55,6 @@ class ThingController extends Controller
 
     public function edit(Thing $thing)
     {
-        //dd($thing->tags[1]->id);
         $places=Place::all();
         $place_id=Usage::where('thing_id',$thing->id)->first()->place_id;
 
@@ -96,6 +87,9 @@ class ThingController extends Controller
 
     public function destroy(Thing $thing)
     {
+        
+        $usage=Usage::where('thing_id', $thing->id)->first();
+        $usage->delete();
         $thing->delete();
         return redirect()->route('main');
     }

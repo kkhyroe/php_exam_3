@@ -32,7 +32,6 @@ Route::get('/things/{thing}','ThingController@show')->name('things.show');
 Route::get('/things/{thing}/edit','ThingController@edit')->name('things.edit');
 Route::patch('/things/{thing}','ThingController@update')->name('things.update');
 Route::delete('/things/{thing}','ThingController@destroy')->name('things.destroy');
-Route::post('/things/search','ThingController@search')->name('things.search');
 
 Route::get('/mythings/{thing}/edit','MyThingController@edit')->name('mythings.edit');
 Route::get('/mythings/{thing}','MyThingController@show')->name('mythings.show');
@@ -44,7 +43,6 @@ Route::get('/places/{place}','PlaceController@show')->name('places.show');
 Route::get('/places/{place}/edit','PlaceController@edit')->name('places.edit');
 Route::patch('/places/{place}','PlaceController@update')->name('places.update');
 Route::delete('/places/{place}','PlaceController@destroy')->name('places.destroy');
-Route::post('/places/search','PlaceController@search')->name('places.search');
 
 
 
